@@ -1,17 +1,9 @@
-FROM alpine/git@sha256:ec76d75a4b5367f16cf6dc859e23c06656761ad4dfcb1716c1800582ce05f5e8
+# syntax=docker/dockerfile:1
+# SPDX-License-Identifier: Apache-2.0
 
-RUN apk --no-cache add bash
-
-LABEL "com.github.actions.name"="Mirror Repository"
-LABEL "com.github.actions.description"="Automate mirroring of git commits to another remote repository, like GitLab or Bitbucket"
-LABEL "com.github.actions.icon"="git-commit"
-LABEL "com.github.actions.color"="green"
-
-LABEL "repository"="https://github.com/yesolutions/mirror-action"
-LABEL "homepage"="https://github.com/yesolutions/mirror-action"
-LABEL "maintainer"="Spencer Phillip Young <spencer.young@spyoung.com>"
-
-
-COPY entrypoint.sh /entrypoint.sh
-COPY cred-helper.sh /cred-helper.sh
+FROM alpine/git:2.52.0@sha256:b4ba5e95ee803a9f98fe9f4306e0105f679d2386dedaf207ffe62dd20fdd3f1c
+LABEL maintainer="honeok <i@honeok.com>"
+RUN set -ex \
+    && apk add --no-cache --update bash
+COPY --chmod=755 *.sh /
 ENTRYPOINT ["/entrypoint.sh"]
