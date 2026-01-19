@@ -1,11 +1,11 @@
-# git-mirror-action
+# git-mirror-repository-action
 
 > [!TIP]
 > The GitHub Action for mirroring repositories for the 80% use case.
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/honeok/git-mirror-action/build.yaml?branch=master&logo=github)](https://github.com/honeok/git-mirror-action)
-[![GitHub Release](https://img.shields.io/github/release/honeok/git-mirror-action.svg?logo=github)](https://github.com/honeok/git-mirror-action/releases/latest)
-[![GitHub License](https://img.shields.io/github/license/honeok/git-mirror-action.svg?logo=github)](https://github.com/honeok/git-mirror-action)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/honeok/git-mirror-repository-action/build.yaml?branch=master&logo=github)](https://github.com/honeok/git-mirror-repository-action)
+[![GitHub Release](https://img.shields.io/github/release/honeok/git-mirror-repository-action.svg?logo=github)](https://github.com/honeok/git-mirror-repository-action/releases/latest)
+[![GitHub License](https://img.shields.io/github/license/honeok/git-mirror-repository-action.svg?logo=github)](https://github.com/honeok/git-mirror-repository-action)
 
 A GitHub Action to mirror your repository commits, branches, and tags to another remote repository such as GitLab, Bitbucket, Gitea, or even another GitHub repository.
 
@@ -44,7 +44,7 @@ jobs:
           fetch-depth: 0
 
       - name: "Mirror to gitlab"
-        uses: honeok/git-mirror-action@v1
+        uses: honeok/git-mirror-repository-action@v1
         with:
           REMOTE: "ssh://git@gitlab.com/${{ github.repository }}.git"
           GIT_SSH_PRIVATE_KEY: ${{ secrets.GIT_SSH_PRIVATE_KEY }}
@@ -66,7 +66,7 @@ jobs:
           fetch-depth: 0
 
       - name: Mirror to GitLab
-        uses: honeok/git-mirror-action@v1
+        uses: honeok/git-mirror-repository-action@v1
         with:
           REMOTE: "https://gitlab.com/${{ github.repository }}.git"
           GIT_USERNAME: ${{ github.repository_owner }}
