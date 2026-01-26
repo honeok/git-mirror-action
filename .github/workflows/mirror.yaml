@@ -2,10 +2,8 @@
 name: "GitHub Actions Mirror"
 
 on:
-  release:
-    types: [published]
   push:
-    tags: ["v*"]
+    branches: [master]
   workflow_dispatch: {}
 
 jobs:
